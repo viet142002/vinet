@@ -1,6 +1,4 @@
-import Home from '~/Pages/Home';
-import Notifycation from '~/Pages/Notification';
-import Profile from '~/Pages/Profile';
+import { Home, Notification, Profile, Message } from '~/Pages';
 
 const publicRoutes = [
   {
@@ -8,12 +6,18 @@ const publicRoutes = [
     component: Home,
   },
   {
-    path: '/notifycation',
-    component: Notifycation,
+    path: '/notification',
+    component: Notification,
   },
   {
     path: '/profile',
     component: Profile,
+    layout: 'OnlyFooterLayout',
+  },
+  {
+    path: '/message',
+    component: Message,
+    layout: 'OnlyFooterLayout',
   },
 ];
 

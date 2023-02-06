@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './Routes';
-import { DefaultLayout } from './Components/Layout';
+import { DefaultLayout, OnlyFooterLayout } from './Components/Layouts';
+import { Fragment } from 'react';
 
 function App() {
   return (
@@ -8,7 +9,14 @@ function App() {
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
-            const Layout = route.layout || DefaultLayout;
+            let Layout = DefaultLayout;
+
+            if (route.layout === 'OnlyFooterLayout') {
+              Layout = OnlyFooterLayout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
+
             const Page = route.component;
             return (
               <Route
